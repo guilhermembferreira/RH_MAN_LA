@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class UserDetail extends Model
 {
     use HasFactory;
+
+    public function user()
+    {
+        // Cada detalhe de utilizador pertence a um utilizador
+        return $this->belongsTo(User::class);
+    }
 }
