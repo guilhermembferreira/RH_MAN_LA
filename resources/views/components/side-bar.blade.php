@@ -9,7 +9,7 @@
 
     <hr>
 
-    <a href="#" class=""><i class="fas fa-cog me-3"></i>Perfil do Utilizador</a>
+    <a href="{{ route('user.profile') }}" class=""><i class="fas fa-cog me-3"></i>Perfil do Utilizador</a>
 
     <hr>
 
