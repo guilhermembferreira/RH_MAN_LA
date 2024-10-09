@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RhUserController;
 
 Route::middleware('auth')->group(function () {
 
@@ -25,5 +26,10 @@ Route::middleware('auth')->group(function () {
     //delete route of department
     Route::get('/departments/delete-department-confirmation/{id}', [DepartmentController::class, 'deleteDepartment'])->name('departments.delete-department-confirmation');
     Route::get('/departments/delete-department-conf/{id}', [DepartmentController::class, 'deleteDepartmentConf'])->name('departments.delete-department-conf');
+
+    // Colaboradores
+    Route::get('/rh-users', [RhUserController::class, 'index'])->name('colaborators.rh-users');
+    Route::get('/rh-users/new-dapartment', [RhUserController::class, 'newColaborator'])->name('colaborators.new-colaborator');
+    Route::post('/rh-users/create-dapartment', [RhUserController::class, 'createColaborator'])->name('colaborators.create-colaborator');
     
 });
