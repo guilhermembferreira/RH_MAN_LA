@@ -18,4 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/departments', [DepartmentController::class, 'index'])->name('departments');
     Route::get('/departments/new-dapartment', [DepartmentController::class, 'newDepartment'])->name('departments.new-department');
     Route::post('/departments/create-dapartment', [DepartmentController::class, 'createDepartment'])->name('departments.create-department');
+    
+    Route::get('/departments/edit-department/{id}', [DepartmentController::class, 'editDepartment'])->name('departments.edit-department');
+    Route::post('/departments/update-dapartment', [DepartmentController::class, 'updateDepartment'])->name('departments.update-department');
 });
