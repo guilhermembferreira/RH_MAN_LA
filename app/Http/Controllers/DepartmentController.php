@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 
+
 class DepartmentController extends Controller
 {
     public function index(): View
@@ -25,7 +26,7 @@ class DepartmentController extends Controller
         return view('department.add-department');
     }
 
-    public function createDepartment(Request $request): View
+    public function createDepartment(Request $request)
     {
         Auth::user()->can('admin') ?: abort(403, 'Acesso negado');
 
@@ -75,6 +76,34 @@ class DepartmentController extends Controller
         $department->update([
             'name' => $request->name
         ]);
+
+        return redirect()->route('departments');
+    }
+
+    public function deleteDepartment($id)
+    {
+        Auth::user()->can('admin') ?: abort(403, 'Acesso negado');
+
+        if (intval($id) === 1) {
+            return redirect()->route('departments');
+        }
+
+        $department = Department::findOrFail($id);
+
+        return view('department.delete-department-confirmation', compact('department'));
+    }
+
+    public function deleteDepartmentConf($id)
+    {
+        Auth::user()->can('admin') ?: abort(403, 'Acesso negado');
+
+        if (intval($id) === 1) {
+            return redirect()->route('departments');
+        }
+
+        $department = Department::findOrFail($id);
+
+        $department->delete();
 
         return redirect()->route('departments');
     }

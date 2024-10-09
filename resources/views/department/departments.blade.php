@@ -35,7 +35,7 @@
                                             class="btn btn-sm btn-outline-dark">
                                             <i class="fa-regular fa-pen-to-square me-2"></i>Edit
                                         </a>
-                                        <a href="#" class="btn btn-sm btn-outline-dark"><i
+                                        <a href="{{ route('departments.delete-department-confirmation', ['id' => $department->id]) }}" class="btn btn-sm btn-outline-dark"><i
                                                 class="fa-regular fa-trash-can me-2"></i>Delete</a>
                                     @endif
                                 </div>
