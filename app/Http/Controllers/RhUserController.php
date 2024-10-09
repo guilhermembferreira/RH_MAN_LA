@@ -36,10 +36,8 @@ class RhUserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'select_department' => 'required|exist:departments,id'
+            'select_department' => 'required|exists:departments,id'
         ]);
-
-        dd($request->all());
 
         // create new rh user
         $user = new User();
